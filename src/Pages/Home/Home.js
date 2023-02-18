@@ -10,7 +10,7 @@ const Home = () => {
     queryKey: ["products"],
     queryFn: async () => {
       const res = await fetch(
-        "https://api.hiring.masterkey.tech/api/v1/product/get"
+        "fakeData.json"
       );
       const data = await res.json();
       return data;
@@ -20,7 +20,7 @@ const Home = () => {
   console.log(allProduct?.products);
 
   return (
-    <div>
+    <div className="my-10 px-5">
       <Header></Header>
       <Swiper
         style={{
@@ -61,13 +61,13 @@ const Home = () => {
               key={product?._id}
               className="text-center hover:underline"
             >
-              <Link to={`/category/${product.categoryName}`}>
+              <Link to={`/category/${product.name}`}>
                 <img
-                  src={product?.image}
+                  src={product?.picture}
                   className="w-32 h-32 object-cover mx-auto"
                   alt="slide-img"
                 />
-                <p>{product?.categoryName}</p>
+                <p>Price: {product?.price}</p>
               </Link>
             </SwiperSlide>
           ))}
